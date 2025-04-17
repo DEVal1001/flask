@@ -7,55 +7,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container bg-dark">
-        <div class="row bg-primary">
-            <div class="col-md-1 bg bg-secondary">col-1</div>
-            <div class="col-3 bg-info">col-3</div>
-            <div class="col-6 bg-warning">col-6</div>
-            <div class="col-12 bg-danger">col-12</div>
-        </div>
-        <div class="row text-white">
-            linha
-        </div>
+    <div>
+        <h3>Estudo Flask</h3>
     </div>
-    <div class="container mt-2 border">
-        <div class="row justify-content-between p-1">
-            <a href="" class="btn btn-primary col-md-2">Link 1</a>
-            <a href="" class="btn btn-danger col-md-2">Link 2</a>
-            <a href="" class="btn btn-warning col-md-2">Link 3</a>
-            <a href="" class="btn btn-success col-md-2">Link 4</a>
-    </div>
+    <div>
+        <p>Bem vindo {{context.usuario}} a aula Flask</p>
 
-    <div class="container mt-2 border rounded shadow">
-        <div class="row">
-            <table class="table text-center table-hover table-striped table-bordered table-sm table-responsive">
-                <thead>
-                    <tr class="table-primary">
-                        <th>id</th>
-                        <th>nome</th>
-                        <th>idade</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Lucas</td>
-                        <td>25</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Maria</td>
-                        <td>30</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>João</td>
-                        <td>38</td>
-                    </tr>
-                </tbody>
-                    
-            </table>
-        </div>
+        <a href="{{url_for('contato')}}">Contato</a>
     </div>
         
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
