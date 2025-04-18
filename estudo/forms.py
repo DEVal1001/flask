@@ -1,10 +1,8 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, EmailField
 from wtforms.validators import DataRequired, Email
-
 from estudo import db
 from estudo.models import Contato
-
 
 
 class ContatoForm(FlaskForm):
