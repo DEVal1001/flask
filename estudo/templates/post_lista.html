@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %} 
+    <div class="container">
+        {% include 'nav.html' %}
+        <div class="row mt-4">
+            <h3>Lista de Posts</h3>
+
+            <div class="col-12 mt-4">
+                <table class="table table-striped table-hover">
+                    <thead>
+                        <tr>
+                            <th>Post</th>
+                            <th>Usuario</th>
+                            <th>Sobrenome</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for linha in posts %}
+                        <tr>
+                            <td>{{linha.msg_resumo()}}</td>
+                            <td>{{linha.user.nome}} </td>
+                            <td>{{linha.user.sobrenome}}</td>
+                            <td><a href="{{url_for('postDetail', id=linha.id)}}">Detalhes</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
