@@ -7,7 +7,7 @@
     <div>
 
         {% if current_user.is_authenticated %}
-            <span class="btn btn-primary">{{current_user.nome}} {{current_user.sobrenome}}</span>
+            <span class="btn btn-primary">{{ current_user.nome|e }} {{ current_user.sobrenome|e }}</span>
             <a href="{{ url_for('logout')}}" class="btn btn-danger">sair</a>
         {% else %}
 
