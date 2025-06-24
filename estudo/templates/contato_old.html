@@ -22,6 +22,7 @@
             </div>
 
             <form action="" method="post" class="row mt-4">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                 <div class="col-6">
                     Nome
                     <input type="text" name="nome" id=""class="form-control" required>

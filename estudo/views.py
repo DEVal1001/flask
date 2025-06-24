@@ -115,6 +115,8 @@ def contato_old():
         context.update({'pesquisa': pesquisa})
         
     if request.method == 'POST':
+        # CSRF protection is automatically checked by Flask-WTF
+        # The csrf_token in the form will be validated automatically
         nome = request.form.get('nome')
         email = request.form.get('email')
         assunto = request.form.get('assunto')
