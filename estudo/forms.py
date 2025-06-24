@@ -21,7 +21,8 @@ class UserForm(FlaskForm):
             return ValidationError('Usuário já cadastrado com esse Email.')
         
     def save(self):
-        senha = bcrypt.generate_password_hash(self.senha.data.encode('utf-8'))
+        # Generate a secure password hash
+        senha = bcrypt.generate_password_hash(self.senha.data.encode('utf-8')).decode('utf-8')
         user = User(
             nome=self.nome.data, 
             sobrenome=self.sobrenome.data,
@@ -43,11 +44,19 @@ class LoginForm(FlaskForm):
         user = User.query.filter_by(email=self.email.data).first()
         # Verifica se a senha é válida
         if user:
-            if bcrypt.check_password_hash(user.senha, self.senha.data.encode('utf-8')):
-                # Se a senha for válida, retorna o usuário
-                return user
+            # Ensure the stored password is a bytes object for bcrypt
+            stored_pw = user.senha
+            if isinstance(stored_pw, str) and stored_pw.startswith('$2b$'):
+                # It's already a bcrypt hash string
+                if bcrypt.check_password_hash(stored_pw, self.senha.data.encode('utf-8')):
+                    return user
             else:
-                raise Exception('Senha incorreta.')
+                # Fallback for any passwords not yet migrated - should be temporary
+                if stored_pw == self.senha.data:
+                    return user
+            
+            # If we get here, authentication failed
+            raise Exception('Senha incorreta.')
         else:
             raise Exception('Usuário não encontrado.')
 
